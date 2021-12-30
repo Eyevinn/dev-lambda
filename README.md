@@ -9,14 +9,12 @@ Uses Fastify to setup a local endpoint to emulate ELB triggered events.
 ```javascript
 const { LambdaELB } = require("@eyevinn/dev-lambda");
 
-const lambda = {
-  handler: async (event) => {
-    console.log(event);
-    return { statusCode: 204 };
-  }
+const handler = async (event) => {
+  console.log(event);
+  return { statusCode: 204 };
 }
 
-(new LambdaELB(lambda)).run();
+(new LambdaELB({ handler })).run();
 ```
 
 # About Eyevinn Technology
