@@ -44,11 +44,14 @@ export class LambdaELB {
         body: request.body !== null ? JSON.stringify(request.body) : undefined,
       };
       const response = await lambda.handler(event);
-      debug(response);
+      let body: string|Buffer = response.body ? response.body : "";
+      if (response.isBase64Encoded) {
+        body = Buffer.from(response.body, "base64");
+      }
       reply
       .code(response.statusCode)
       .headers(response.headers ? response.headers : {})
-      .send(response.body ? response.body : "");
+      .send(body);
     });
   }
 
