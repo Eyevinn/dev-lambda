@@ -13,7 +13,7 @@ export class LambdaELB {
 
   constructor(lambda: AWSLambda) {
     this.server = fastify();
-    this.server.get("*", async (request, reply) => {
+    this.server.all("*", async (request, reply) => {
       debug(request.url);
       let params = {};
       const [ path, queryString ] = request.url.split("?");
