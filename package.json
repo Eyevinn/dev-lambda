@@ -1,6 +1,6 @@
 {
   "name": "@eyevinn/dev-lambda",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Libraries to facilitate development of Lambda functions",
   "main": "dist/index.js",
   "scripts": {
